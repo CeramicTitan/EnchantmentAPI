@@ -27,7 +27,8 @@ class EListener implements Listener {
 
         // Rule out cases where enchantments don't apply
         if (event.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK) return;
-        if (!(event.getDamager() instanceof LivingEntity)) return;
+        if (!(event.getDamager() instanceof LivingEntity) && (event.getDamager() instanceof Player)) return;
+        //Fixes NPE: http://pastie.org/7991976
         if (!(event.getEntity() instanceof LivingEntity)) return;
 
         // Check for enchantments and apply them
